@@ -1,148 +1,670 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validación de Expertos - Modelo Predictivo TB Chile 2026</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuentes: Inter para UI, Merriweather para textos largos (estilo Paper) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        :root { --primary: #0f172a; --accent: #0284c7; --gold: #b45309; }
-        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; color: #334155; }
-        h1, h2, h3, h4 { font-family: 'Merriweather', serif; }
+        :root {
+            --primary: #0f172a; /* Slate 900 */
+            --accent: #0284c7;  /* Sky 600 */
+            --gold: #b45309;    /* Amber 700 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+        }
         .hero-pattern {
             background-color: #0f172a;
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
-        .paper-card { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; }
-        .scale-btn:checked + label { background-color: #0f172a; color: white; border-color: #0f172a; }
-        .scale-label:hover { border-color: #0f172a; color: #0f172a; }
-        .check-card input:checked + div { background-color: #f0fdf4; border-color: #16a34a; box-shadow: 0 0 0 1px #16a34a; }
-        .progress-bar { transition: width 0.5s ease-in-out; }
+        .paper-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        .paper-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .evidence-tag {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border-left: 4px solid #d97706;
+        }
+        .scale-btn:checked + label {
+            background-color: #0f172a;
+            color: white;
+            border-color: #0f172a;
+        }
+        .scale-label:hover {
+            border-color: #0f172a;
+            color: #0f172a;
+        }
+        /* Animación suave para el top 3 */
+        .check-card {
+            transition: all 0.2s;
+        }
+        .check-card input:checked + div {
+            background-color: #f0fdf4;
+            border-color: #16a34a;
+            box-shadow: 0 0 0 1px #16a34a;
+        }
+        .progress-bar {
+            transition: width 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- Progress Bar Sticky -->
     <div class="fixed top-0 left-0 w-full h-1.5 z-50 bg-slate-200">
         <div class="h-full bg-sky-600 progress-bar" style="width: 0%" id="progressBar"></div>
     </div>
 
+    <!-- Hero Section -->
     <header class="hero-pattern text-white pt-16 pb-24 shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10">
+            <i class="fa-solid fa-lungs-virus text-9xl"></i>
+        </div>
         <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-sky-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Estudio Delphi / Validación</span>
+                <span class="border border-slate-600 text-slate-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Confidencial</span>
+            </div>
             <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">Determinantes de Riesgo <br> <span class="text-sky-400">Modelo Predictivo Tuberculosis 2026</span></h1>
-            <p class="text-slate-300 text-lg max-w-2xl font-light">Instrumento de validación técnica para la identificación de áreas de riesgo territorial.</p>
+            <p class="text-slate-300 text-lg max-w-2xl font-light font-sans">
+                Instrumento de validación de expertos basado en triangulación de evidencia: <br>
+                <strong class="text-white">Literatura Q1 (Nature/BMC)</strong> + <strong class="text-white">Normativa MINSAL (Circular 06/2025)</strong> + <strong class="text-white">Epidemiología Local</strong>.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-4 text-sm font-sans text-slate-400">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-university"></i> Institución Académica
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-file-contract"></i> Protocolo Ético
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-clock"></i> Tiempo estimado: 20 min
+                </div>
+            </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-6 -mt-16 pb-20 relative z-20">
-        <form action="https://formspree.io/f/xdaldgqp" method="POST" id="expertForm">
 
-            <div class="bg-white rounded-lg paper-card mb-8 overflow-hidden border-t-4 border-sky-600 p-8">
-                <h2 class="text-xl font-bold text-slate-900 mb-4">01. Caracterización del Experto</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-semibold mb-2">Años de Experiencia</label>
-                        <select name="Años_Experiencia" class="w-full bg-slate-50 border p-3 rounded" required onchange="updateProgress(15)">
-                            <option value="" disabled selected>Seleccionar...</option>
-                            <option value="<5">Menos de 5 años</option>
-                            <option value="5-10">Entre 5 y 10 años</option>
-                            <option value=">10">Más de 10 años</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold mb-2">Nivel de Atención</label>
-                        <select name="Nivel_Atencion" class="w-full bg-slate-50 border p-3 rounded" required onchange="updateProgress(30)">
-                            <option value="" disabled selected>Seleccionar...</option>
-                            <option value="APS">APS / CESFAM</option>
-                            <option value="Hospitalario">Hospitalario</option>
-                            <option value="Penitenciario">Penitenciario</option>
-                        </select>
+        <form id="expertForm" onsubmit="handleSubmit(event)">
+
+           <div class="bg-white rounded-lg paper-card mb-8 overflow-hidden border-t-4 border-sky-600">
+    <div class="p-8">
+        <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 font-bold font-sans">01</div>
+            <div>
+                <h2 class="text-xl font-bold text-slate-900">Caracterización del Experto</h2>
+                <p class="text-sm text-slate-500 font-sans">Información necesaria para ponderar la respuesta según nivel de atención.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Años de Experiencia Clínica/Gestión</label>
+                <div class="relative">
+                    <select name="experiencia" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="updateProgress(10)">
+                        <option value="" disabled selected>Seleccionar...</option>
+                        <option value="<5">Menos de 5 años</option>
+                        <option value="5-10">Entre 5 y 10 años</option>
+                        <option value=">10">Más de 10 años</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg paper-card mb-8 p-8">
-                <h3 class="font-bold text-lg mb-2">D1.1 Situación de calle: Importancia (1-9)</h3>
-                <p class="text-sm text-slate-500 mb-6 italic">Ponderación según Circular ISP 2025 y Minsal 2023.</p>
-                
-                <div class="flex justify-between items-center gap-2">
-                    <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
-                    <div class="flex-1 flex justify-between gap-1 max-w-2xl mx-auto">
-                        <div class="flex-1">
-                            <input type="radio" name="Importancia_Calle" id="m1" value="1" class="hidden scale-btn" required onchange="updateProgress(45)">
-                            <label for="m1" class="scale-label block w-full text-center border rounded py-2 cursor-pointer transition">1</label>
-                        </div>
-                        <div class="flex-1">
-                            <input type="radio" name="Importancia_Calle" id="m2" value="2" class="hidden scale-btn"><label for="m2" class="scale-label block w-full text-center border rounded py-2 cursor-pointer transition">2</label>
-                        </div>
-                        <div class="flex-1">
-                            <input type="radio" name="Importancia_Calle" id="m3" value="3" class="hidden scale-btn"><label for="m3" class="scale-label block w-full text-center border rounded py-2 cursor-pointer transition">3</label>
-                        </div>
-                        <div class="flex-1">
-                            <input type="radio" name="Importancia_Calle" id="m4" value="4" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border rounded py-2 cursor-pointer transition">4</label>
-                        </div>
-                        <div class="flex-1">
-                            <input type="radio" name="Importancia_Calle" id="m5" value="5" class="hidden scale-btn"><label for="m5" class="scale-label block w-full text-center border rounded py-2 cursor-pointer transition">5</label>
-                        </div>
-                        <div class="flex-1">
-                            <input type="radio" name="Importancia_Calle" id="m6" value="6" class="hidden scale-btn"><label for="m6" class="scale-label block w-full text-center border rounded py-2 cursor-pointer transition">6</label>
-                        </div>
-                        <div class="flex-1">
-                            <input type="radio" name="Importancia_Calle" id="m7" value="7" class="hidden scale-btn"><label for="m7" class="scale-label block w-full text-center border rounded py-2 cursor-pointer transition">7</label>
-                        </div>
-                        <div class="flex-1">
-                            <input type="radio" name="Importancia_Calle" id="m8" value="8" class="hidden scale-btn"><label for="m8" class="scale-label block w-full text-center border rounded py-2 cursor-pointer transition">8</label>
-                        </div>
-                        <div class="flex-1">
-                            <input type="radio" name="Importancia_Calle" id="m9" value="9" class="hidden scale-btn"><label for="m9" class="scale-label block w-full text-center border rounded py-2 cursor-pointer transition">9</label>
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Nivel de Atención Principal</label>
+                <div class="relative">
+                    <select name="nivel" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="updateProgress(20)">
+                        <option value="" disabled selected>Seleccionar...</option>
+                        <option value="APS">CESFAM / SAPU / APS</option>
+                        <option value="Hospitalario">Hospital de baja/mediana complejidad</option>
+                        <option value="Alta">Hospital de alta complejidad</option>
+                        <option value="Penitenciario">Centro penitenciario</option>
+                        <option value="Privado">Clínica privada</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full">
+            <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">¿Participa actualmente en el Programa de Control y Eliminación de la Tuberculosis (PROCET) o en unidades relacionadas con TB?</label>
+            <div class="relative">
+                <select name="participa_tb" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="updateProgress(30)">
+                    <option value="" disabled selected>Seleccionar...</option>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                    <option value="informal">No formalmente, pero manejo casos de TB.</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
+                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+            <!-- SECTION 2: VARIABLES SOCIALES -->
+            <div class="bg-white rounded-lg paper-card mb-8 overflow-hidden">
+                <div class="bg-slate-50 px-8 py-4 border-b border-slate-200 flex justify-between items-center">
+                    <h3 class="font-bold text-slate-700">Dimensión I:    Factores sociales y de vulnerabilidad</h3>
+                    <i class="fa-solid fa-users-rays text-slate-300 text-xl"></i>
+                </div>
+
+                <div class="p-8">
+                    <!-- EVIDENCE BOX -->
+                    <div class="evidence-tag p-4 rounded mb-8 text-sm text-amber-900 font-sans leading-relaxed">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-quote-left text-amber-600 mt-1"></i>
+                            <div>
+                                <strong class="block text-amber-800 mb-1 font-bold">Evidencia de Respaldo:</strong>
+                                <ul class="list-disc pl-4 space-y-1 opacity-90">
+                                    <li><em>“Indique qué tan importante son las siguientes variables sociales para el riesgo de TB o para dificultades en el diagnóstico/tratamiento. Considere que todas ellas han sido identificadas en la literatura y/o en documentos oficiales como factores de riesgo relevantes para tuberculosis”</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+
+                    <!-- PREGUNTA 1 -->
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">1. Situación de calle:</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">La situación de calle se reconoce como grupo de alto riesgo, con grandes dificultades de seguimiento y adherencia al tratamiento en Chile (Informe MINSAL 2023; Circular ISP 2025)</p>
+
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
+                            <div class="flex-1 flex justify-between gap-2 max-w-md mx-auto">
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_1" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">1</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_2" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">2</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_3" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">3</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_4" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">4</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_5" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">5</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_6" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">6</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_7" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">7</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_8" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">8</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_9" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">9</label></div>
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+                        </div>
+                    </div>
+
+                    <!-- PREGUNTA 2 -->
+                    <div>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">2. Hacinamiento y Vivienda (Cités/Campamentos)</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">Validado por <em>Gatica (2012)</em> y <em>Rev. Vitalia (2024)</em> como motor de transmisión en zonas urbanas.</p>
+
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
+                            <div class="flex-1 flex justify-between gap-2 max-w-md mx-auto">
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h1" value="1" class="hidden scale-btn" required onchange="updateProgress(40)"><label for="h1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">1</label></div>
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h2" value="2" class="hidden scale-btn"><label for="h2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">2</label></div>
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h3" value="3" class="hidden scale-btn"><label for="h3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">3</label></div>
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h4" value="4" class="hidden scale-btn"><label for="h4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">4</label></div>
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h5" value="5" class="hidden scale-btn"><label for="h5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">5</label></div>
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h5" value="5" class="hidden scale-btn"><label for="h5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">6</label></div>
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h5" value="5" class="hidden scale-btn"><label for="h5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">7</label></div>
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h5" value="5" class="hidden scale-btn"><label for="h5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">8</label></div>
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h5" value="5" class="hidden scale-btn"><label for="h5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">9</label></div>                               
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+                        </div>
+                    </div>
+        
+
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">3. Personas privadas de libertad (cárceles)</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">Tasas de TB muy superiores al promedio nacional por hacinamiento y mala ventilación (MINSAL 2023; Global Fund 2024).</p>
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
+                            <div class="flex-1 flex justify-between gap-1 max-w-2xl mx-auto">
+                                <div class="w-full"><input type="radio" name="d1_2_carceles" id="d1_2_1" value="1" class="hidden scale-btn" required><label for="d1_2_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">1</label></div>
+                                <div class="w-full"><input type="radio" name="d1_2_carceles" id="d1_2_2" value="2" class="hidden scale-btn"><label for="d1_2_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">2</label></div>
+                                <div class="w-full"><input type="radio" name="d1_2_carceles" id="d1_2_3" value="3" class="hidden scale-btn"><label for="d1_2_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">3</label></div>
+                                <div class="w-full"><input type="radio" name="d1_2_carceles" id="d1_2_4" value="4" class="hidden scale-btn"><label for="d1_2_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">4</label></div>
+                                <div class="w-full"><input type="radio" name="d1_2_carceles" id="d1_2_5" value="5" class="hidden scale-btn"><label for="d1_2_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">5</label></div>
+                                <div class="w-full"><input type="radio" name="d1_2_carceles" id="d1_2_6" value="6" class="hidden scale-btn"><label for="d1_2_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">6</label></div>
+                                <div class="w-full"><input type="radio" name="d1_2_carceles" id="d1_2_7" value="7" class="hidden scale-btn"><label for="d1_2_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
+                                <div class="w-full"><input type="radio" name="d1_2_carceles" id="d1_2_8" value="8" class="hidden scale-btn"><label for="d1_2_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
+                                <div class="w-full"><input type="radio" name="d1_2_carceles" id="d1_2_9" value="9" class="hidden scale-btn"><label for="d1_2_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">4. Migración internacional / nacionalidad extranjera</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">Asociada a mayor incidencia de TB y modificación del perfil epidemiológico en grandes urbes (MINSAL 2023).</p>
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
+                            <div class="flex-1 flex justify-between gap-1 max-w-2xl mx-auto">
+                                <div class="w-full"><input type="radio" name="d1_3_migracion" id="d1_3_1" value="1" class="hidden scale-btn" required><label for="d1_3_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">1</label></div>
+                                <div class="w-full"><input type="radio" name="d1_3_migracion" id="d1_3_2" value="2" class="hidden scale-btn"><label for="d1_3_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">2</label></div>
+                                <div class="w-full"><input type="radio" name="d1_3_migracion" id="d1_3_3" value="3" class="hidden scale-btn"><label for="d1_3_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">3</label></div>
+                                <div class="w-full"><input type="radio" name="d1_3_migracion" id="d1_3_4" value="4" class="hidden scale-btn"><label for="d1_3_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">4</label></div>
+                                <div class="w-full"><input type="radio" name="d1_3_migracion" id="d1_3_5" value="5" class="hidden scale-btn"><label for="d1_3_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">5</label></div>
+                                <div class="w-full"><input type="radio" name="d1_3_migracion" id="d1_3_6" value="6" class="hidden scale-btn"><label for="d1_3_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">6</label></div>
+                                <div class="w-full"><input type="radio" name="d1_3_migracion" id="d1_3_7" value="7" class="hidden scale-btn"><label for="d1_3_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
+                                <div class="w-full"><input type="radio" name="d1_3_migracion" id="d1_3_8" value="8" class="hidden scale-btn"><label for="d1_3_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
+                                <div class="w-full"><input type="radio" name="d1_3_migracion" id="d1_3_9" value="9" class="hidden scale-btn"><label for="d1_3_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">5. Hacinamiento intradomiciliario</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">Facilita la transmisión por contacto estrecho y se vincula a conglomerados familiares (Rev. Chilena de Infectología).</p>
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
+                            <div class="flex-1 flex justify-between gap-1 max-w-2xl mx-auto">
+                                <div class="w-full"><input type="radio" name="d1_4_hacinamiento" id="d1_4_1" value="1" class="hidden scale-btn" required><label for="d1_4_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">1</label></div>
+                                <div class="w-full"><input type="radio" name="d1_4_hacinamiento" id="d1_4_2" value="2" class="hidden scale-btn"><label for="d1_4_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">2</label></div>
+                                <div class="w-full"><input type="radio" name="d1_4_hacinamiento" id="d1_4_3" value="3" class="hidden scale-btn"><label for="d1_4_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">3</label></div>
+                                <div class="w-full"><input type="radio" name="d1_4_hacinamiento" id="d1_4_4" value="4" class="hidden scale-btn"><label for="d1_4_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">4</label></div>
+                                <div class="w-full"><input type="radio" name="d1_4_hacinamiento" id="d1_4_5" value="5" class="hidden scale-btn"><label for="d1_4_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">5</label></div>
+                                <div class="w-full"><input type="radio" name="d1_4_hacinamiento" id="d1_4_6" value="6" class="hidden scale-btn"><label for="d1_4_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">6</label></div>
+                                <div class="w-full"><input type="radio" name="d1_4_hacinamiento" id="d1_4_7" value="7" class="hidden scale-btn"><label for="d1_4_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
+                                <div class="w-full"><input type="radio" name="d1_4_hacinamiento" id="d1_4_8" value="8" class="hidden scale-btn"><label for="d1_4_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
+                                <div class="w-full"><input type="radio" name="d1_4_hacinamiento" id="d1_4_9" value="9" class="hidden scale-btn"><label for="d1_4_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">6. Pobreza/ Bajos Ingresos</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">Determinante principal que explica los "hotspots" y la mayor carga en comunas de menores ingresos (Global Fund 2024).</p>
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
+                            <div class="flex-1 flex justify-between gap-1 max-w-2xl mx-auto">
+                                <div class="w-full"><input type="radio" name="d1_5_pobreza" id="d1_5_1" value="1" class="hidden scale-btn" required><label for="d1_5_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">1</label></div>
+                                <div class="w-full"><input type="radio" name="d1_5_pobreza" id="d1_5_2" value="2" class="hidden scale-btn"><label for="d1_5_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">2</label></div>
+                                <div class="w-full"><input type="radio" name="d1_5_pobreza" id="d1_5_3" value="3" class="hidden scale-btn"><label for="d1_5_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">3</label></div>
+                                <div class="w-full"><input type="radio" name="d1_5_pobreza" id="d1_5_4" value="4" class="hidden scale-btn"><label for="d1_5_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">4</label></div>
+                                <div class="w-full"><input type="radio" name="d1_5_pobreza" id="d1_5_5" value="5" class="hidden scale-btn"><label for="d1_5_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">5</label></div>
+                                <div class="w-full"><input type="radio" name="d1_5_pobreza" id="d1_5_6" value="6" class="hidden scale-btn"><label for="d1_5_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">6</label></div>
+                                <div class="w-full"><input type="radio" name="d1_5_pobreza" id="d1_5_7" value="7" class="hidden scale-btn"><label for="d1_5_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
+                                <div class="w-full"><input type="radio" name="d1_5_pobreza" id="d1_5_8" value="8" class="hidden scale-btn"><label for="d1_5_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
+                                <div class="w-full"><input type="radio" name="d1_5_pobreza" id="d1_5_9" value="9" class="hidden scale-btn"><label for="d1_5_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">7. Bajo nivel educativo</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">Asociado con menor conocimiento de síntomas, estigma y barreras en la comprensión del tratamiento (IJID 2023).</p>
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
+                            <div class="flex-1 flex justify-between gap-1 max-w-2xl mx-auto">
+                                <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_1" value="1" class="hidden scale-btn" required><label for="d1_6_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">1</label></div>
+                                <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_2" value="2" class="hidden scale-btn"><label for="d1_6_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">2</label></div>
+                                <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_3" value="3" class="hidden scale-btn"><label for="d1_6_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">3</label></div>
+                                <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_4" value="4" class="hidden scale-btn"><label for="d1_6_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">4</label></div>
+                                <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_5" value="5" class="hidden scale-btn"><label for="d1_6_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">5</label></div>
+                                <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_6" value="6" class="hidden scale-btn"><label for="d1_6_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">6</label></div>
+                                <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_7_7" value="7" class="hidden scale-btn"><label for="d1_6_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
+                                <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_8" value="8" class="hidden scale-btn"><label for="d1_6_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
+                                <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_9" value="9" class="hidden scale-btn"><label for="d1_6_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">8. Pertenencia a Etnias Indígenas</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">Brechas de equidad y mayor incidencia debido a determinantes sociales y barreras culturales (OPS/OMS 2024).</p>
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
+                            <div class="flex-1 flex justify-between gap-1 max-w-2xl mx-auto">
+                                <div class="w-full"><input type="radio" name="d1_7_etnia" id="d1_7_1" value="1" class="hidden scale-btn" required><label for="d1_7_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">1</label></div>
+                                <div class="w-full"><input type="radio" name="d1_7_etnia" id="d1_7_2" value="2" class="hidden scale-btn"><label for="d1_7_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">2</label></div>
+                                <div class="w-full"><input type="radio" name="d1_7_etnia" id="d1_7_3" value="3" class="hidden scale-btn"><label for="d1_7_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">3</label></div>
+                                <div class="w-full"><input type="radio" name="d1_7_etnia" id="d1_7_4" value="4" class="hidden scale-btn"><label for="d1_7_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">4</label></div>
+                                <div class="w-full"><input type="radio" name="d1_7_etnia" id="d1_7_5" value="5" class="hidden scale-btn"><label for="d1_7_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">5</label></div>
+                                <div class="w-full"><input type="radio" name="d1_7_etnia" id="d1_7_6" value="6" class="hidden scale-btn"><label for="d1_7_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">6</label></div>
+                                <div class="w-full"><input type="radio" name="d1_7_etnia" id="d1_7_7" value="7" class="hidden scale-btn"><label for="d1_7_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
+                                <div class="w-full"><input type="radio" name="d1_7_etnia" id="d1_7_8" value="8" class="hidden scale-btn"><label for="d1_7_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
+                                <div class="w-full"><input type="radio" name="d1_7_etnia" id="d1_7_9" value="9" class="hidden scale-btn"><label for="d1_7_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">9. Calidad de la vivienda (Materialidad)</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">Ventilación deficiente y materiales precarios favorecen la persistencia del bacilo y el contagio (BMC Public Health 2023).</p>
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
+                            <div class="flex-1 flex justify-between gap-1 max-w-2xl mx-auto">
+                                <div class="w-full"><input type="radio" name="d1_8_vivienda" id="d1_8_1" value="1" class="hidden scale-btn" required><label for="d1_8_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">1</label></div>
+                                <div class="w-full"><input type="radio" name="d1_8_vivienda" id="d1_8_2" value="2" class="hidden scale-btn"><label for="d1_8_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">2</label></div>
+                                <div class="w-full"><input type="radio" name="d1_8_vivienda" id="d1_8_3" value="3" class="hidden scale-btn"><label for="d1_8_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">3</label></div>
+                                <div class="w-full"><input type="radio" name="d1_8_vivienda" id="d1_8_4" value="4" class="hidden scale-btn"><label for="d1_8_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">4</label></div>
+                                <div class="w-full"><input type="radio" name="d1_8_vivienda" id="d1_8_5" value="5" class="hidden scale-btn"><label for="d1_8_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">5</label></div>
+                                <div class="w-full"><input type="radio" name="d1_8_vivienda" id="d1_8_6" value="6" class="hidden scale-btn"><label for="d1_8_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">6</label></div>
+                                <div class="w-full"><input type="radio" name="d1_8_vivienda" id="d1_8_7" value="7" class="hidden scale-btn"><label for="d1_8_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
+                                <div class="w-full"><input type="radio" name="d1_8_vivienda" id="d1_8_8" value="8" class="hidden scale-btn"><label for="d1_8_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
+                                <div class="w-full"><input type="radio" name="d1_8_vivienda" id="d1_8_9" value="9" class="hidden scale-btn"><label for="d1_8_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">10. Región de Residencia</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">Incidencias que duplican el promedio nacional en Macrozona Norte y Metropolitana (MINSAL 2023).</p>
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
+                            <div class="flex-1 flex justify-between gap-1 max-w-2xl mx-auto">
+                                <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_1" value="1" class="hidden scale-btn" required><label for="d1_9_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">1</label></div>
+                                <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_2" value="2" class="hidden scale-btn"><label for="d1_9_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">2</label></div>
+                                <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_3" value="3" class="hidden scale-btn"><label for="d1_9_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">3</label></div>
+                                <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_4" value="4" class="hidden scale-btn"><label for="d1_9_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">4</label></div>
+                                <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_5" value="5" class="hidden scale-btn"><label for="d1_9_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">5</label></div>
+                                <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_6" value="6" class="hidden scale-btn"><label for="d1_9_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">6</label></div>
+                                <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_7" value="7" class="hidden scale-btn"><label for="d1_9_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
+                                <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_8" value="8" class="hidden scale-btn"><label for="d1_9_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
+                                <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_9" value="9" class="hidden scale-btn"><label for="d1_9_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">11. Densidad Poblacional</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">Alta densidad urbana facilita conglomerados y dificulta el control de contactos (The Lancet Infectious Diseases).</p>
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
+                            <div class="flex-1 flex justify-between gap-1 max-w-2xl mx-auto">
+                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_1" value="1" class="hidden scale-btn" required><label for="d1_10_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">1</label></div>
+                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_2" value="2" class="hidden scale-btn"><label for="d1_10_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">2</label></div>
+                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_3" value="3" class="hidden scale-btn"><label for="d1_10_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">3</label></div>
+                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_4" value="4" class="hidden scale-btn"><label for="d1_10_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">4</label></div>
+                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_5" value="5" class="hidden scale-btn"><label for="d1_10_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">5</label></div>
+                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_6" value="6" class="hidden scale-btn"><label for="d1_10_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">6</label></div>
+                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_7" value="7" class="hidden scale-btn"><label for="d1_10_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
+                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_8" value="8" class="hidden scale-btn"><label for="d1_10_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
+                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_9" value="9" class="hidden scale-btn"><label for="d1_10_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+
+            <!-- SECTION 3: NORMATIVA Y CONDUCTA -->
+            <div class="bg-white rounded-lg paper-card mb-8 overflow-hidden">
+                <div class="bg-slate-50 px-8 py-4 border-b border-slate-200 flex justify-between items-center">
+                    <h3 class="font-bold text-slate-700">Dimensión II: Criterios Normativos (Circular 06/2025)</h3>
+                    <i class="fa-solid fa-file-medical text-slate-300 text-xl"></i>
+                </div>
+
+                <div class="p-8">
+                     <div class="evidence-tag p-4 rounded mb-8 text-sm text-amber-900 font-sans leading-relaxed">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-scale-balanced text-amber-600 mt-1"></i>
+                            <div>
+                                <strong class="block text-amber-800 mb-1 font-bold">Base Normativa ISP/MINSAL:</strong>
+                                La Circular 06/2025 define explícitamente como "Grupos Vulnerables Prioritarios" a personas con consumo problemático de alcohol/drogas y personas en situación de calle.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PREGUNTA 3 -->
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">3. Consumo de Sustancias (Alcohol/Drogas)</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">En su opinión, la localización geográfica (comuna, barrio) influye en la probabilidad de que un paciente tenga TB:</p>
+
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Bajo</span>
+                            <div class="flex-1 flex justify-between gap-2 max-w-md mx-auto">
+                                <div class="w-full"><input type="radio" name="p_drogas" id="d1" value="Si,mucho" class="hidden scale-btn" required onchange="updateProgress(50)"><label for="d1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">Si, mucho</label></div>
+                                <div class="w-full"><input type="radio" name="p_drogas" id="d2" value="Si, algo" class="hidden scale-btn"><label for="d2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">Si, algo</label></div>
+                                <div class="w-full"><input type="radio" name="p_drogas" id="d3" value="Muy poco" class="hidden scale-btn"><label for="d3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">Poco</label></div>
+                                <div class="w-full"><input type="radio" name="p_drogas" id="d4" value="Nada" class="hidden scale-btn"><label for="d4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">Nada</label></div>
+
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Crítico</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="bg-slate-900 rounded-lg paper-card mb-12 p-8 text-white">
-                <h3 class="text-2xl font-bold mb-4">Jerarquización: El "Top 3" de Riesgo</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-800">
-                    <label class="check-card cursor-pointer">
-                        <input type="checkbox" name="Prioridad_Calle" value="Si" class="hidden top3-check" onchange="checkLimit(this)">
-                        <div class="bg-white p-4 rounded-lg flex items-center gap-3 border transition">
-                            <span class="font-bold text-sm">Situación de Calle</span>
+            <!-- SECTION 4: CLINICA (Q1) -->
+            <div class="bg-white rounded-lg paper-card mb-8 overflow-hidden">
+                <div class="bg-slate-50 px-8 py-4 border-b border-slate-200 flex justify-between items-center">
+                    <h3 class="font-bold text-slate-700">Dimensión III: Fenotipos Clínicos</h3>
+                    <i class="fa-solid fa-notes-medical text-slate-300 text-xl"></i>
+                </div>
+
+                <div class="p-8">
+                     <div class="evidence-tag p-4 rounded mb-8 text-sm text-amber-900 font-sans leading-relaxed">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-flask text-amber-600 mt-1"></i>
+                            <div>
+                                <strong class="block text-amber-800 mb-1 font-bold">Evidencia Científica (Nature Portfolio):</strong>
+                                <em>Scientific Reports (2022)</em> identifica a la Diabetes (20.7%) como la comorbilidad dominante. <em>Frontiers in Public Health (2023)</em> asocia el bajo peso con una mortalidad duplicada (OR 2.0).
+                            </div>
                         </div>
-                    </label>
-                    <label class="check-card cursor-pointer">
-                        <input type="checkbox" name="Prioridad_Hacinamiento" value="Si" class="hidden top3-check" onchange="checkLimit(this)">
-                        <div class="bg-white p-4 rounded-lg flex items-center gap-3 border transition">
-                            <span class="font-bold text-sm">Hacinamiento Crítico</span>
-                        </div>
-                    </label>
                     </div>
-                <p id="limitWarning" class="text-amber-400 text-xs mt-3 hidden">Seleccione máximo 3.</p>
+
+                    <!-- PREGUNTA 4 -->
+                    <div class="mb-10">
+                        <label class="block text-lg font-bold text-slate-800 mb-2">4. Diabetes Mellitus</label>
+                        <p class="text-sm text-slate-500 mb-4 font-sans">¿Observa en su práctica una correlación entre Diabetes descompensada y una presentación clínica más agresiva o resistente?</p>
+
+                        <div class="flex justify-between items-center gap-2 font-sans">
+                            <span class="text-xs font-bold text-slate-400 w-16 text-right">No</span>
+                            <div class="flex-1 flex justify-between gap-2 max-w-md mx-auto">
+                                <div class="w-full"><input type="radio" name="p_diabetes" id="dia1" value="1" class="hidden scale-btn" required onchange="updateProgress(60)"><label for="dia1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">1</label></div>
+                                <div class="w-full"><input type="radio" name="p_diabetes" id="dia2" value="2" class="hidden scale-btn"><label for="dia2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">2</label></div>
+                                <div class="w-full"><input type="radio" name="p_diabetes" id="dia3" value="3" class="hidden scale-btn"><label for="dia3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">3</label></div>
+                                <div class="w-full"><input type="radio" name="p_diabetes" id="dia4" value="4" class="hidden scale-btn"><label for="dia4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">4</label></div>
+                                <div class="w-full"><input type="radio" name="p_diabetes" id="dia5" value="5" class="hidden scale-btn"><label for="dia5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">5</label></div>
+                            </div>
+                            <span class="text-xs font-bold text-sky-700 w-16">Sí, fuerte</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <button type="submit" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-4 px-12 rounded-full shadow-lg mx-auto block transform transition hover:-translate-y-1">
-                Enviar Validación Experta
-            </button>
+            <!-- SECTION 5: JERARQUIZACIÓN -->
+            <div class="bg-slate-900 rounded-lg paper-card mb-12 overflow-hidden text-white shadow-2xl relative">
+                <div class="absolute top-0 right-0 p-4 opacity-5">
+                    <i class="fa-solid fa-chart-simple text-9xl"></i>
+                </div>
+                <div class="p-8 relative z-10">
+                    <h3 class="text-2xl font-bold mb-2">Juicio de Experto: El "Top 3" de Fracaso</h3>
+                    <p class="text-slate-400 text-sm mb-6 font-sans">Seleccione exactamente <strong>3 variables</strong> que, en su experiencia real, son las principales causas de abandono o fracaso del tratamiento.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-sans text-slate-800" id="checkboxGroup">
+
+                        <label class="check-card cursor-pointer">
+                            <input type="checkbox" name="top3" value="Calle" class="hidden top3-check" onchange="checkLimit(this)">
+                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
+                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
+                                <div>
+                                    <span class="block font-bold text-sm">Situación de Calle</span>
+                                    <span class="text-xs text-slate-500">Circular 06/2025</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="check-card cursor-pointer">
+                            <input type="checkbox" name="top3" value="Drogas" class="hidden top3-check" onchange="checkLimit(this)">
+                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
+                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
+                                <div>
+                                    <span class="block font-bold text-sm">Consumo de Sustancias</span>
+                                    <span class="text-xs text-slate-500">Alcohol / Drogas / Pasta Base</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="check-card cursor-pointer">
+                            <input type="checkbox" name="top3" value="Migracion" class="hidden top3-check" onchange="checkLimit(this)">
+                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
+                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
+                                <div>
+                                    <span class="block font-bold text-sm">Barreras Migratorias</span>
+                                    <span class="text-xs text-slate-500">Idioma / Sin Previsión / Miedo</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="check-card cursor-pointer">
+                            <input type="checkbox" name="top3" value="Diabetes" class="hidden top3-check" onchange="checkLimit(this)">
+                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
+                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
+                                <div>
+                                    <span class="block font-bold text-sm">Diabetes Descompensada</span>
+                                    <span class="text-xs text-slate-500">Scientific Reports 2022</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="check-card cursor-pointer">
+                            <input type="checkbox" name="top3" value="VIH" class="hidden top3-check" onchange="checkLimit(this)">
+                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
+                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
+                                <div>
+                                    <span class="block font-bold text-sm">Coinfección VIH</span>
+                                    <span class="text-xs text-slate-500">Global Fund 2024</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="check-card cursor-pointer">
+                            <input type="checkbox" name="top3" value="Hacinamiento" class="hidden top3-check" onchange="checkLimit(this)">
+                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
+                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
+                                <div>
+                                    <span class="block font-bold text-sm">Hacinamiento Crítico</span>
+                                    <span class="text-xs text-slate-500">Teibo et al. (2023)</span>
+                                </div>
+                            </div>
+                        </label>
+
+                    </div>
+                    <p id="limitWarning" class="text-amber-400 text-xs mt-3 hidden"><i class="fa-solid fa-circle-exclamation"></i> Por favor seleccione solo 3 opciones principales.</p>
+                </div>
+            </div>
+
+            <!-- BUTTON -->
+            <div class="text-center">
+                <button type="submit" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-4 px-12 rounded-full shadow-lg shadow-sky-600/30 transform transition hover:-translate-y-1 text-lg flex items-center gap-3 mx-auto">
+                    <span>Enviar Validación Experta</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+                <p class="text-slate-400 text-xs mt-4 font-sans">Todos los datos serán tratados bajo estricto anonimato académico.</p>
+            </div>
+
         </form>
     </main>
 
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-10 mt-10">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="text-slate-900 font-bold font-serif mb-2">Proyecto de Investigación: Determinantes TB Chile</p>
+            <p class="text-slate-500 text-sm font-sans mb-6">Metodología basada en revisión sistemática de literatura (PRISMA) y normativa nacional.</p>
+            <div class="flex justify-center gap-4 text-slate-400 text-sm">
+                <span><i class="fa-solid fa-book"></i> Nature Portfolio</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-building-columns"></i> MINSAL</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-globe"></i> OMS</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL SUCCESS -->
+    <div id="successModal" class="fixed inset-0 bg-slate-900/80 hidden items-center justify-center z-50 px-4 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl transform scale-100 transition-all">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fa-solid fa-check text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-2 font-serif">Validación Registrada</h3>
+            <p class="text-slate-600 mb-8 font-sans text-sm">Su criterio experto ha sido incorporado a la matriz de ponderación del estudio. Muchas gracias.</p>
+            <button onclick="window.location.reload()" class="w-full bg-slate-900 text-white py-3 rounded-lg font-bold hover:bg-slate-800 transition">Cerrar</button>
+        </div>
+    </div>
+
     <script>
+        // Progress Bar Logic
         function updateProgress(val) {
-            document.getElementById('progressBar').style.width = val + '%';
+            // Simple logic: increase bar as user interacts
+            const current = document.getElementById('progressBar').style.width;
+            let currentVal = parseInt(current) || 0;
+            if (val > currentVal) {
+                document.getElementById('progressBar').style.width = val + '%';
+            }
         }
 
+        // Checkbox Limit Logic
         function checkLimit(checkbox) {
+            updateProgress(90);
             const checked = document.querySelectorAll('.top3-check:checked');
+            const warning = document.getElementById('limitWarning');
+
             if (checked.length > 3) {
                 checkbox.checked = false;
-                document.getElementById('limitWarning').classList.remove('hidden');
-            } else {
-                document.getElementById('limitWarning').classList.add('hidden');
-                updateProgress(90);
+                warning.classList.remove('hidden');
+                setTimeout(() => warning.classList.add('hidden'), 3000);
             }
+        }
+
+        // Submit Logic
+        function handleSubmit(e) {
+            e.preventDefault();
+            const checked = document.querySelectorAll('.top3-check:checked');
+            if (checked.length === 0) {
+                alert("Por favor seleccione al menos 1 factor en el Top 3");
+                return;
+            }
+            document.getElementById('progressBar').style.width = '100%';
+            document.getElementById('successModal').classList.remove('hidden');
+            document.getElementById('successModal').classList.add('flex');
         }
     </script>
 </body>
+<!-- modify this form HTML and place wherever you want your form -->
+<form
+  action="https://formspree.io/f/xdaldgqp"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
 </html>
