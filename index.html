@@ -1,6 +1,23 @@
 
 <!DOCTYPE html>
 <html lang="es">
+<!-- modify this form HTML and place wherever you want your form -->
+<form
+  action="https://formspree.io/f/xdaldgqp"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -197,15 +214,16 @@
                         <div class="flex justify-between items-center gap-2 font-sans">
                             <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
                             <div class="flex-1 flex justify-between gap-2 max-w-md mx-auto">
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_1" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">1</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_2" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">2</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_3" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">3</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_4" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">4</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_5" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">5</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_6" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">6</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_7" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">7</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_8" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">8</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_9" value="9" class="hidden scale-btn"><label for="m4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">9</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_1" value="1" class="hidden scale-btn" required onchange="updateProgress(40)"><label for="m4_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">1</label></div>
+                    
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_2" value="9" class="hidden scale-btn"><label for="m4_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">2</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_3" value="9" class="hidden scale-btn"><label for="m4_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">3</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_4" value="9" class="hidden scale-btn"><label for="m4_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">4</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_5" value="9" class="hidden scale-btn"><label for="m4_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">5</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_6" value="9" class="hidden scale-btn"><label for="m4_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">6</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_7" value="9" class="hidden scale-btn"><label for="m4_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">7</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_8" value="9" class="hidden scale-btn"><label for="m4_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">8</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_9" value="9" class="hidden scale-btn"><label for="m4_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">9</label></div>
                             </div>
                             <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
                         </div>
@@ -492,87 +510,6 @@
                 </div>
             </div>
 
-            <!-- SECTION 5: JERARQUIZACIÓN -->
-            <div class="bg-slate-900 rounded-lg paper-card mb-12 overflow-hidden text-white shadow-2xl relative">
-                <div class="absolute top-0 right-0 p-4 opacity-5">
-                    <i class="fa-solid fa-chart-simple text-9xl"></i>
-                </div>
-                <div class="p-8 relative z-10">
-                    <h3 class="text-2xl font-bold mb-2">Juicio de Experto: El "Top 3" de Fracaso</h3>
-                    <p class="text-slate-400 text-sm mb-6 font-sans">Seleccione exactamente <strong>3 variables</strong> que, en su experiencia real, son las principales causas de abandono o fracaso del tratamiento.</p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-sans text-slate-800" id="checkboxGroup">
-
-                        <label class="check-card cursor-pointer">
-                            <input type="checkbox" name="top3" value="Calle" class="hidden top3-check" onchange="checkLimit(this)">
-                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
-                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
-                                <div>
-                                    <span class="block font-bold text-sm">Situación de Calle</span>
-                                    <span class="text-xs text-slate-500">Circular 06/2025</span>
-                                </div>
-                            </div>
-                        </label>
-
-                        <label class="check-card cursor-pointer">
-                            <input type="checkbox" name="top3" value="Drogas" class="hidden top3-check" onchange="checkLimit(this)">
-                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
-                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
-                                <div>
-                                    <span class="block font-bold text-sm">Consumo de Sustancias</span>
-                                    <span class="text-xs text-slate-500">Alcohol / Drogas / Pasta Base</span>
-                                </div>
-                            </div>
-                        </label>
-
-                        <label class="check-card cursor-pointer">
-                            <input type="checkbox" name="top3" value="Migracion" class="hidden top3-check" onchange="checkLimit(this)">
-                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
-                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
-                                <div>
-                                    <span class="block font-bold text-sm">Barreras Migratorias</span>
-                                    <span class="text-xs text-slate-500">Idioma / Sin Previsión / Miedo</span>
-                                </div>
-                            </div>
-                        </label>
-
-                        <label class="check-card cursor-pointer">
-                            <input type="checkbox" name="top3" value="Diabetes" class="hidden top3-check" onchange="checkLimit(this)">
-                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
-                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
-                                <div>
-                                    <span class="block font-bold text-sm">Diabetes Descompensada</span>
-                                    <span class="text-xs text-slate-500">Scientific Reports 2022</span>
-                                </div>
-                            </div>
-                        </label>
-
-                        <label class="check-card cursor-pointer">
-                            <input type="checkbox" name="top3" value="VIH" class="hidden top3-check" onchange="checkLimit(this)">
-                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
-                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
-                                <div>
-                                    <span class="block font-bold text-sm">Coinfección VIH</span>
-                                    <span class="text-xs text-slate-500">Global Fund 2024</span>
-                                </div>
-                            </div>
-                        </label>
-
-                        <label class="check-card cursor-pointer">
-                            <input type="checkbox" name="top3" value="Hacinamiento" class="hidden top3-check" onchange="checkLimit(this)">
-                            <div class="bg-white p-4 rounded-lg flex items-center gap-3 border border-transparent hover:bg-slate-50 transition h-full">
-                                <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-xs text-white"></i></div>
-                                <div>
-                                    <span class="block font-bold text-sm">Hacinamiento Crítico</span>
-                                    <span class="text-xs text-slate-500">Teibo et al. (2023)</span>
-                                </div>
-                            </div>
-                        </label>
-
-                    </div>
-                    <p id="limitWarning" class="text-amber-400 text-xs mt-3 hidden"><i class="fa-solid fa-circle-exclamation"></i> Por favor seleccione solo 3 opciones principales.</p>
-                </div>
-            </div>
 
             <!-- BUTTON -->
             <div class="text-center">
@@ -649,22 +586,9 @@
             document.getElementById('successModal').classList.remove('hidden');
             document.getElementById('successModal').classList.add('flex');
         }
+        
     </script>
+    
 </body>
-<!-- modify this form HTML and place wherever you want your form -->
-<form
-  action="https://formspree.io/f/xdaldgqp"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
-</form>
+
 </html>
