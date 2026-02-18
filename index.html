@@ -1,22 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="es">
-<!-- modify this form HTML and place wherever you want your form -->
-<form
-  action="https://formspree.io/f/xdaldgqp"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
-</form>
 
 <head>
     <meta charset="UTF-8">
@@ -121,7 +105,7 @@
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-6 -mt-16 pb-20 relative z-20">
 
-        <form id="expertForm" onsubmit="handleSubmit(event)">
+        <form id="expertForm" onsubmit="handleSubmit(event)" action="https://formspree.io/f/xdaldgqp" method="POST">
 
            <div class="bg-white rounded-lg paper-card mb-8 overflow-hidden border-t-4 border-sky-600">
     <div class="p-8">
@@ -215,14 +199,13 @@
                             <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
                             <div class="flex-1 flex justify-between gap-2 max-w-md mx-auto">
                                 <div class="w-full"><input type="radio" name="p_migracion" id="m4_1" value="1" class="hidden scale-btn" required onchange="updateProgress(40)"><label for="m4_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">1</label></div>
-                    
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_2" value="9" class="hidden scale-btn"><label for="m4_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">2</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_3" value="9" class="hidden scale-btn"><label for="m4_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">3</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_4" value="9" class="hidden scale-btn"><label for="m4_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">4</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_5" value="9" class="hidden scale-btn"><label for="m4_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">5</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_6" value="9" class="hidden scale-btn"><label for="m4_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">6</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_7" value="9" class="hidden scale-btn"><label for="m4_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">7</label></div>
-                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_8" value="9" class="hidden scale-btn"><label for="m4_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">8</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_2" value="2" class="hidden scale-btn"><label for="m4_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">2</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_3" value="3" class="hidden scale-btn"><label for="m4_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">3</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_4" value="4" class="hidden scale-btn"><label for="m4_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">4</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_5" value="5" class="hidden scale-btn"><label for="m4_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">5</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_6" value="6" class="hidden scale-btn"><label for="m4_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">6</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_7" value="7" class="hidden scale-btn"><label for="m4_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">7</label></div>
+                                <div class="w-full"><input type="radio" name="p_migracion" id="m4_8" value="8" class="hidden scale-btn"><label for="m4_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">8</label></div>
                                 <div class="w-full"><input type="radio" name="p_migracion" id="m4_9" value="9" class="hidden scale-btn"><label for="m4_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">9</label></div>
                             </div>
                             <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
@@ -242,10 +225,10 @@
                                 <div class="w-full"><input type="radio" name="p_hacinamiento" id="h3" value="3" class="hidden scale-btn"><label for="h3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">3</label></div>
                                 <div class="w-full"><input type="radio" name="p_hacinamiento" id="h4" value="4" class="hidden scale-btn"><label for="h4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">4</label></div>
                                 <div class="w-full"><input type="radio" name="p_hacinamiento" id="h5" value="5" class="hidden scale-btn"><label for="h5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">5</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h5" value="5" class="hidden scale-btn"><label for="h5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">6</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h5" value="5" class="hidden scale-btn"><label for="h5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">7</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h5" value="5" class="hidden scale-btn"><label for="h5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">8</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h5" value="5" class="hidden scale-btn"><label for="h5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">9</label></div>                               
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h6" value="5" class="hidden scale-btn"><label for="h6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">6</label></div>
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h7" value="5" class="hidden scale-btn"><label for="h7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">7</label></div>
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h8" value="5" class="hidden scale-btn"><label for="h8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">8</label></div>
+                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h9" value="5" class="hidden scale-btn"><label for="h9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">9</label></div>                               
                             </div>
                             <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
                         </div>
@@ -344,7 +327,7 @@
                                 <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_4" value="4" class="hidden scale-btn"><label for="d1_6_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">4</label></div>
                                 <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_5" value="5" class="hidden scale-btn"><label for="d1_6_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">5</label></div>
                                 <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_6" value="6" class="hidden scale-btn"><label for="d1_6_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">6</label></div>
-                                <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_7_7" value="7" class="hidden scale-btn"><label for="d1_6_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
+                                <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_7" value="7" class="hidden scale-btn"><label for="d1_6_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
                                 <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_8" value="8" class="hidden scale-btn"><label for="d1_6_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
                                 <div class="w-full"><input type="radio" name="d1_6_educacion" id="d1_6_9" value="9" class="hidden scale-btn"><label for="d1_6_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
                             </div>
@@ -590,5 +573,7 @@
     </script>
     
 </body>
+<!-- modify this form HTML and place wherever you want your form -->
 
+</form>
 </html>
