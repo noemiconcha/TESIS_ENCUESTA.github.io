@@ -182,111 +182,114 @@
         <form action="https://formspree.io/f/xdaldgqp" method="POST" id="expertForm">
 
            <div class="bg-white rounded-lg paper-card mb-8 overflow-hidden border-t-4 border-sky-600">
-    <div class="p-8">
-        <div class="flex items-center gap-4 mb-6">
-            <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 font-bold font-sans">01</div>
-            <div>
-                <h2 class="text-xl font-bold text-slate-900">Caracterización del Experto</h2>
-                <p class="text-sm text-slate-500 font-sans">Información necesaria para ponderar la respuesta según nivel de experticia y ámbito profesional.</p>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-
-            <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Profesión</label>
-                <div class="relative">
-                    <select name="profesion" id="profesion" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="toggleCodigoMedico(); updateProgress(5)">
-                        <option value="" disabled selected>Seleccionar...</option>
-                        <option value="Medico">Médico/a</option>
-                        <option value="Enfermeria">Enfermero/a</option>
-                        <option value="Kinesiologia">Kinesiólogo/a</option>
-                        <option value="Tecnologo">Tecnólogo/a Médico</option>
-                        <option value="Matrona">Matrona</option>
-                        <option value="TENS">TENS</option>
-                        <option value="SaludPublica">Salud Pública / Gestión</option>
-                        <option value="Otro">Otro</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
-                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                <div class="p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 font-bold font-sans">01</div>
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">Caracterización del Experto</h2>
+                            <p class="text-sm text-slate-500 font-sans">Información necesaria para ponderar la respuesta según nivel de experticia y ámbito profesional.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Rol Principal Actual</label>
-                <div class="relative">
-                    <select name="rol" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="updateProgress(8)">
-                        <option value="" disabled selected>Seleccionar...</option>
-                        <option value="Clinico">Clínico Asistencial</option>
-                        <option value="EncargadoTB">Encargado/a Programa TB</option>
-                        <option value="Coordinador">Coordinador/a</option>
-                        <option value="Director">Director/a / Jefatura</option>
-                        <option value="Investigador">Investigador/a</option>
-                        <option value="Gestion">Gestión Administrativa</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
-                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 items-start">
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Profesión</label>
+                            <div class="relative">
+                                <select name="profesion" id="profesion" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="toggleCodigoMedico(); updateProgress(5)">
+                                    <option value="" disabled selected>Seleccionar...</option>
+                                    <option value="Medico">Médico/a</option>
+                                    <option value="Enfermeria">Enfermero/a</option>
+                                    <option value="Kinesiologia">Kinesiólogo/a</option>
+                                    <option value="Tecnologo">Tecnólogo/a Médico</option>
+                                    <option value="Matrona">Matrona</option>
+                                    <option value="TENS">TENS</option>
+                                    <option value="SaludPublica">Salud Pública / Gestión</option>
+                                    <option value="Investigador">Investigador/a</option>
+                                    <option value="Consultor">Consultor/a</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Rol Principal Actual</label>
+                            <div class="relative">
+                                <select name="rol" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="verificarRol(this); updateProgress(8)">
+                                    <option value="" disabled selected>Seleccionar...</option>
+                                    <option value="Clinico">Clínico Asistencial</option>
+                                    <option value="EncargadoTB">Encargado/a Programa TB</option>
+                                    <option value="Coordinador">Coordinador/a</option>
+                                    <option value="Director">Director/a / Jefatura</option>
+                                    <option value="Investigador">Investigador/a</option>
+                                    <option value="Consultor">Consultor/a</option>
+                                    <option value="Gestion">Gestión Administrativa</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Años de Experiencia Clínica/Gestión/Investigación</label>
+                            <div class="relative">
+                                <select name="experiencia" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="updateProgress(10)">
+                                    <option value="" disabled selected>Seleccionar...</option>
+                                    <option value="<5">Menos de 5 años</option>
+                                    <option value="5-10">Entre 5 y 10 años</option>
+                                    <option value=">10">Más de 10 años</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="nivel-container">
+                            <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Nivel de Atención Principal</label>
+                            <div class="relative">
+                                <select id="nivel-select" name="nivel" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="updateProgress(20)">
+                                    <option value="" disabled selected>Seleccionar...</option>
+                                    <option value="APS">CESFAM / SAPU / APS</option>
+                                    <option value="Hospitalario">Hospital de baja/mediana complejidad</option>
+                                    <option value="Alta">Hospital de alta complejidad</option>
+                                    <option value="Penitenciario">Centro penitenciario</option>
+                                    <option value="Privado">Clínica privada</option>
+                                    <option value="Ninguna">Ninguna</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <div id="codigoMedicoContainer" class="hidden mb-6">
+                        <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Código Profesional MINSAL (solo si es Médico/a)</label>
+                        <input type="text" name="codigo_medico" class="w-full bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 rounded focus:outline-none focus:bg-white focus:border-sky-500" placeholder="Ej: 123456">
+                        <p class="text-xs text-slate-400 mt-2 font-sans">Dato opcional para validación académica. No se asociará a sus respuestas individuales.</p>
                     </div>
-                </div>
-            </div>
 
-            <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Años de Experiencia Clínica/Gestión</label>
-                <div class="relative">
-                    <select name="experiencia" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="updateProgress(10)">
-                        <option value="" disabled selected>Seleccionar...</option>
-                        <option value="<5">Menos de 5 años</option>
-                        <option value="5-10">Entre 5 y 10 años</option>
-                        <option value=">10">Más de 10 años</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
-                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    <div class="w-full">
+                        <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">¿Participa actualmente en el Programa de Control y Eliminación de la Tuberculosis (PROCET) o en unidades relacionadas con TB?</label>
+                        <div class="relative">
+                            <select name="participa_tb" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="updateProgress(30)">
+                                <option value="" disabled selected>Seleccionar...</option>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                                <option value="informal">No formalmente, pero manejo casos de TB.</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
-
-            <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Nivel de Atención Principal</label>
-                <div class="relative">
-                    <select name="nivel" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="updateProgress(20)">
-                        <option value="" disabled selected>Seleccionar...</option>
-                        <option value="APS">CESFAM / SAPU / APS</option>
-                        <option value="Hospitalario">Hospital de baja/mediana complejidad</option>
-                        <option value="Alta">Hospital de alta complejidad</option>
-                        <option value="Penitenciario">Centro penitenciario</option>
-                        <option value="Privado">Clínica privada</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
-                        <i class="fa-solid fa-chevron-down text-xs"></i>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div id="codigoMedicoContainer" class="hidden mb-6">
-            <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Código Profesional MINSAL (solo si es Médico/a)</label>
-            <input type="text" name="codigo_medico" class="w-full bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 rounded focus:outline-none focus:bg-white focus:border-sky-500" placeholder="Ej: 123456">
-            <p class="text-xs text-slate-400 mt-2 font-sans">Dato opcional para validación académica. No se asociará a sus respuestas individuales.</p>
-        </div>
-
-        <div class="w-full">
-            <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">¿Participa actualmente en el Programa de Control y Eliminación de la Tuberculosis (PROCET) o en unidades relacionadas con TB?</label>
-            <div class="relative">
-                <select name="participa_tb" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="updateProgress(30)">
-                    <option value="" disabled selected>Seleccionar...</option>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                    <option value="informal">No formalmente, pero manejo casos de TB.</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
-                    <i class="fa-solid fa-chevron-down text-xs"></i>
-                </div>
-            </div>
-        </div>
-
-    </div>
 
 
             <!-- SECTION 2: VARIABLES SOCIALES -->
@@ -1052,6 +1055,49 @@ function finalizarEnvio(btn) {
     alert("¡Muchas gracias! Su validación ha sido registrada en nuestra base de datos académica.");
 }
 </script>
+<script>
+    // Función para mostrar/ocultar Nivel de Atención
+    function verificarRol(selectElement) {
+        const rolSeleccionado = selectElement.value;
+        const nivelContainer = document.getElementById('nivel-container');
+        const nivelSelect = document.getElementById('nivel-select');
+
+        if (rolSeleccionado === 'Investigador' || rolSeleccionado === 'Consultor') {
+            // display: none elimina el elemento de la rejilla, cerrando el hueco
+            nivelContainer.style.display = 'none';
+            nivelSelect.required = false;
+            nivelSelect.value = ''; 
+        } else {
+            // display: block lo devuelve a la rejilla normal
+            nivelContainer.style.display = 'block';
+            nivelSelect.required = true;
+        }
+    }
+</script>
+<a href="https://wa.me/56931775911?text=Hola Noe, estoy respondiendo tu validación de expertos sobre Tuberculosis y tengo una consulta..." 
+   target="_blank" 
+   class="fixed bottom-5 left-5 z-[100] bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 border-4 border-white group">
+    
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+    
+    <span class="absolute left-16 bg-slate-800 text-white text-xs font-bold px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+        ¿Dudas? Escríbenos 
+        <svg class="absolute text-slate-800 h-2 w-full left-0 top-1/2 -mt-1 -ml-2" x="0px" y="0px" viewBox="0 0 255 255"><polygon class="fill-current" points="0,127.5 127.5,255 127.5,0"/></svg>
+    </span>
+</a>
+function finalizarEnvio(btn) {
+        btn.innerHTML = '<span>¡Enviado con éxito!</span> <i class="fa-solid fa-check"></i>';
+        btn.classList.remove('bg-sky-600');
+        btn.classList.add('bg-green-600');
+        btn.disabled = true;
+        alert("¡Muchas gracias! Su validación ha sido registrada en nuestra base de datos académica.");
+    }
+    </script>
+
+    <script>
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="L_4KSAs4Rmy8m8bicWCG-";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
+
 
 </body>
 </html>
