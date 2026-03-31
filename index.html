@@ -194,6 +194,20 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 items-start">
 
                         <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Nombre</label>
+                            <div class="relative">
+                                <input type="text" name="nombre" id="nombre" placeholder="Escriba su nombre" class="w-full bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required oninput="updateProgress(5)">
+                            </div>
+
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Correo</label>
+                            <div class="relative">
+                                <input type="text" name="email" id="email" placeholder="Escriba su correo." class="w-full bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required oninput="updateProgress(5)">
+                            </div>
+
+                        </div>
+                        <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2 font-sans">Profesión</label>
                             <div class="relative">
                                 <select name="profesion" id="profesion" class="w-full appearance-none bg-slate-50 border border-slate-300 text-slate-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-sky-500" required onchange="toggleCodigoMedico(); updateProgress(5)">
@@ -259,7 +273,9 @@
                                     <option value="Alta">Hospital de alta complejidad</option>
                                     <option value="Penitenciario">Centro penitenciario</option>
                                     <option value="Privado">Clínica privada</option>
+                                    <option value="Ninguna">MINSAL - Nivel Central</option>
                                     <option value="Ninguna">Ninguna</option>
+
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700">
                                     <i class="fa-solid fa-chevron-down text-xs"></i>
@@ -336,30 +352,10 @@
                     </div>
 
                     <!-- PREGUNTA 2 -->
-                    <div>
-                        <label class="block text-lg font-bold text-slate-800 mb-2">2. Hacinamiento y Vivienda (Cités/Campamentos)</label>
-                        <p class="text-sm text-slate-500 mb-4 font-sans">Validado por <em>Gatica (2012)</em> y <em>Rev. Vitalia (2024)</em> como motor de transmisión en zonas urbanas.</p>
 
-                        <div class="flex justify-between items-center gap-2 font-sans">
-                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
-                            <div class="flex-1 flex justify-between gap-2 max-w-md mx-auto">
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h1" value="1" class="hidden scale-btn" required onchange="updateProgress(40)"><label for="h1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">1</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h2" value="2" class="hidden scale-btn"><label for="h2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">2</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h3" value="3" class="hidden scale-btn"><label for="h3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">3</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h4" value="4" class="hidden scale-btn"><label for="h4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">4</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h5" value="5" class="hidden scale-btn"><label for="h5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">5</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h6" value="5" class="hidden scale-btn"><label for="h6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">6</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h7" value="5" class="hidden scale-btn"><label for="h7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">7</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h8" value="5" class="hidden scale-btn"><label for="h8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">8</label></div>
-                                <div class="w-full"><input type="radio" name="p_hacinamiento" id="h9" value="5" class="hidden scale-btn"><label for="h9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition">9</label></div>                               
-                            </div>
-                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
-                        </div>
-                    </div>
-        
 
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">3. Personas privadas de libertad (cárceles)</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">2. Personas privadas de libertad (cárceles)</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">Tasas de TB muy superiores al promedio nacional por hacinamiento y mala ventilación (MINSAL 2023; Global Fund 2024).</p>
                         <div class="flex justify-between items-center gap-2 font-sans">
                             <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
@@ -379,7 +375,7 @@
                     </div>
 
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">4. Migración internacional / nacionalidad extranjera</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">3. Migración internacional / nacionalidad extranjera</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">Asociada a mayor incidencia de TB y modificación del perfil epidemiológico en grandes urbes (MINSAL 2023).</p>
                         <div class="flex justify-between items-center gap-2 font-sans">
                             <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
@@ -399,7 +395,7 @@
                     </div>
 
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">5. Hacinamiento intradomiciliario</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">4. Hacinamiento intradomiciliario</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">Facilita la transmisión por contacto estrecho y se vincula a conglomerados familiares (Rev. Chilena de Infectología).</p>
                         <div class="flex justify-between items-center gap-2 font-sans">
                             <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
@@ -419,7 +415,7 @@
                     </div>
 
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">6. Pobreza/ Bajos Ingresos</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">5. Pobreza/ Bajos Ingresos</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">Determinante principal que explica los "hotspots" y la mayor carga en comunas de menores ingresos (Global Fund 2024).</p>
                         <div class="flex justify-between items-center gap-2 font-sans">
                             <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
@@ -439,7 +435,7 @@
                     </div>
 
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">7. Bajo nivel educativo</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">6. Bajo nivel educativo</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">Asociado con menor conocimiento de síntomas, estigma y barreras en la comprensión del tratamiento (IJID 2023).</p>
                         <div class="flex justify-between items-center gap-2 font-sans">
                             <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
@@ -459,7 +455,7 @@
                     </div>
 
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">8. Pertenencia a Etnias Indígenas</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">7. Pertenencia a Etnias Indígenas</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">Brechas de equidad y mayor incidencia debido a determinantes sociales y barreras culturales (OPS/OMS 2024).</p>
                         <div class="flex justify-between items-center gap-2 font-sans">
                             <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
@@ -479,7 +475,7 @@
                     </div>
 
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">9. Calidad de la vivienda (Materialidad)</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">8. Calidad de la vivienda (Materialidad)</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">Ventilación deficiente y materiales precarios favorecen la persistencia del bacilo y el contagio (BMC Public Health 2023).</p>
                         <div class="flex justify-between items-center gap-2 font-sans">
                             <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
@@ -499,7 +495,7 @@
                     </div>
 
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">10. Región de Residencia</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">9. Región de Residencia</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">Incidencias que duplican el promedio nacional en Macrozona Norte y Metropolitana (MINSAL 2023).</p>
                         <div class="flex justify-between items-center gap-2 font-sans">
                             <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
@@ -513,26 +509,6 @@
                                 <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_7" value="7" class="hidden scale-btn"><label for="d1_9_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
                                 <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_8" value="8" class="hidden scale-btn"><label for="d1_9_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
                                 <div class="w-full"><input type="radio" name="d1_9_region" id="d1_9_9" value="9" class="hidden scale-btn"><label for="d1_9_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
-                            </div>
-                            <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
-                        </div>
-                    </div>
-
-                    <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">11. Densidad Poblacional</label>
-                        <p class="text-sm text-slate-500 mb-4 font-sans">Alta densidad urbana facilita conglomerados y dificulta el control de contactos (The Lancet Infectious Diseases).</p>
-                        <div class="flex justify-between items-center gap-2 font-sans">
-                            <span class="text-xs font-bold text-slate-400 w-16 text-right">Nulo</span>
-                            <div class="flex-1 flex justify-between gap-1 max-w-2xl mx-auto">
-                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_1" value="1" class="hidden scale-btn" required><label for="d1_10_1" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">1</label></div>
-                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_2" value="2" class="hidden scale-btn"><label for="d1_10_2" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">2</label></div>
-                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_3" value="3" class="hidden scale-btn"><label for="d1_10_3" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">3</label></div>
-                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_4" value="4" class="hidden scale-btn"><label for="d1_10_4" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">4</label></div>
-                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_5" value="5" class="hidden scale-btn"><label for="d1_10_5" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">5</label></div>
-                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_6" value="6" class="hidden scale-btn"><label for="d1_10_6" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">6</label></div>
-                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_7" value="7" class="hidden scale-btn"><label for="d1_10_7" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">7</label></div>
-                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_8" value="8" class="hidden scale-btn"><label for="d1_10_8" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">8</label></div>
-                                <div class="w-full"><input type="radio" name="d1_10_densidad" id="d1_10_9" value="9" class="hidden scale-btn"><label for="d1_10_9" class="scale-label block w-full text-center border border-slate-200 rounded py-2 cursor-pointer transition hover:bg-slate-50">9</label></div>
                             </div>
                             <span class="text-xs font-bold text-sky-700 w-16">Determinante</span>
                         </div>
@@ -551,7 +527,7 @@
 
                     <!-- PREGUNTA D3.2 -->
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">12. Consumo de Drogas ilícitas</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">10. Consumo de Drogas ilícitas</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">El uso de sustancias psicoactivas se vincula a redes de transmisión marginales, diagnósticos tardíos y dificultades extremas para la adherencia al tratamiento supervisado (DOTS) (Circular ISP 2025; estudios en poblaciones vulnerables Chile).
                         </p>
                     </div>
@@ -574,7 +550,7 @@
                         </div>
                     <!-- PREGUNTA D3.3 -->
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">13. Fumador Recurrente (Tabaquismo)</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">11. Fumador Recurrente (Tabaquismo)</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">
                                 El consumo de tabaco aumenta sustancialmente el riesgo de contraer TB, de que la enfermedad sea más severa y de sufrir recaídas tras la curación, debido al daño en el aclaramiento mucociliar pulmonar (OMS 2024; Rev. Chilena de Enfermedades Respiratorias).
                         </p>
@@ -598,7 +574,7 @@
                         </div>
                     <!-- PREGUNTA D3.1 -->
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">D3.1 Consumo de Alcohol</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">12. Consumo de Alcohol</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">
                                 El consumo excesivo de alcohol aumenta el riesgo de TB activa y es un factor crítico de abandono del tratamiento, además de potenciar la hepatotoxicidad de los fármacos antituberculosos (The Lancet 2023; MINSAL 2023).
                         </p>
@@ -650,7 +626,7 @@
 
                     <!-- PREGUNTA 4 -->
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">15. Diabetes Mellitus</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">13. Diabetes Mellitus</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">
                                 La diabetes triplica el riesgo de padecer TB y se asocia a peores resultados en el tratamiento, mayores tasas de fracaso y recaídas debido a la alteración de la respuesta inmune (Revista Chilena de Infectología; International Journal of TB and Lung Disease).
                         </p>
@@ -674,7 +650,7 @@
                         </div>
                                         <!-- PREGUNTA D2.1 -->
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">16. Coinfección VIH</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">14. Coinfección VIH</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">
                                 El VIH es el principal factor de riesgo para el desarrollo de TB activa al debilitar la inmunidad celular; las personas con VIH tienen hasta 20 veces más probabilidades de enfermar de TB (OMS Global TB Report 2024; Circular ISP 2025).
                         </p>
@@ -698,7 +674,7 @@
                         </div>
                                             <!-- PREGUNTA D2.3 -->
                     <div class="mb-10">
-                        <label class="block text-lg font-bold text-slate-800 mb-2">17. Desnutrición / Bajo Peso</label>
+                        <label class="block text-lg font-bold text-slate-800 mb-2">15. Desnutrición / Bajo Peso</label>
                         <p class="text-sm text-slate-500 mb-4 font-sans">
                                 Un estado nutricional deficiente compromete la inmunidad innata y adquirida, siendo un predictor clave tanto para la progresión de infección latente a enfermedad activa como para la mortalidad durante el tratamiento (Global TB Report 2024).
                         </p>
@@ -974,8 +950,10 @@ function enviarCuestionario() {
     const btn = document.querySelector('button[onclick="enviarCuestionario()"]');
     
     try {
-        // 1. Definición de los campos de caracterización basándome en tu HTML
+      
         const camposCaracterizacion = [
+            { name: 'nombre', nombre: 'Nombre' },
+            { name: 'email', nombre: 'Correo' },
             { name: 'profesion', nombre: 'Profesión' },
             { name: 'rol', nombre: 'Rol Principal Actual' },
             { name: 'experiencia', nombre: 'Años de Experiencia' },
@@ -988,32 +966,58 @@ function enviarCuestionario() {
             fecha: new Date().toLocaleString()
         };
 
-        // 2. Validar campos de caracterización (Selects)
+        // Obtener valor del rol primero
+        const rolEl = document.querySelector('[name="rol"]');
+        const rolValor = rolEl ? rolEl.value : null;
+
+        // 2. Validar campos de caracterización
         camposCaracterizacion.forEach(campo => {
-            const el = document.querySelector(`select[name="${campo.name}"]`);
-            if (!el || el.value === "" || el.value === null) {
-                camposVacios.push(campo.nombre);
-            } else {
-                datos[campo.name] = el.value;
+
+            const el = document.querySelector(`[name="${campo.name}"]`);
+
+            if (campo.name === "rol") {
+                if (!el || el.value === "" || el.value === null) {
+                    datos[campo.name] = null;
+                } else {
+                    datos[campo.name] = el.value;
+                }
+                return;
             }
+
+            // Si el rol es Investigador o Consultor, permitir null en los demás campos
+            if (rolValor === "Investigador" || rolValor === "Consultor") {
+                if (!el || el.value === "" || el.value === null) {
+                    datos[campo.name] = null;
+                } else {
+                    datos[campo.name] = el.value;
+                }
+            } else {
+                if (!el || el.value === "" || el.value === null) {
+                    camposVacios.push(campo.nombre);
+                } else {
+                    datos[campo.name] = el.value;
+                }
+            }
+
         });
 
-        // 3. Capturar código médico (es opcional, no bloquea el envío)
-        const codMed = document.querySelector('input[name="codigo_medico"]');
+        // 3. Capturar código médico (es opcional)
+        const codMed = document.querySelector('[name="codigo_medico"]');
         datos.codigo_medico = (codMed && codMed.value) ? codMed.value : "No aplica/No provisto";
 
-        // 4. Validar el Ranking AHP (Resultado del cálculo)
+        // 4. Validar Ranking AHP
         const rankingEl = document.getElementById('input-ahp-final');
+
         if (!rankingEl || !rankingEl.value || rankingEl.value.trim() === "") {
             camposVacios.push("Ranking de Priorización (debe realizar las comparaciones)");
         } else {
             datos.ranking_final = rankingEl.value;
         }
 
-        // 5. Si hay campos vacíos, mostrar alerta y detener
+        // 5. Validación final
         if (camposVacios.length > 0) {
             alert("⚠️ No se puede enviar.\n\nFaltan los siguientes campos obligatorios:\n- " + camposVacios.join("\n- "));
-            return; 
+            return;
         }
 
         // --- PROCESO DE ENVÍO ---
@@ -1021,7 +1025,7 @@ function enviarCuestionario() {
         const textoOriginal = btn.innerHTML;
         btn.innerHTML = '<span>Enviando...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
 
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyFem4hhX3FTzk0QCE-N2cYF0lDXRA33D9ICElYUJBNwSxr-8xjh3Ksm32Nn09Dnb6wyw/exec"; // REEMPLAZAR POR TU URL REAL
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyFem4hhX3FTzk0QCE-N2cYF0lDXRA33D9ICElYUJBNwSxr-8xjh3Ksm32Nn09Dnb6wyw/exec";
 
         fetch(SCRIPT_URL, {
             method: 'POST',
